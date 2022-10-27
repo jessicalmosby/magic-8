@@ -2,9 +2,9 @@ const submitBtn = document.getElementById('submit');
 const resetBtn = document.getElementById('reset');
 const promptSection = document.getElementById('prompt');
 const fortuneSection = document.getElementById('fortune');
-const answerP = document.getElementById('results');
+const answerP = document.getElementById('answer');
 
-const answers = [
+const answer = [
     'Yes, definitely',
     'It is certain',
     'It is decidedly so',
@@ -28,7 +28,18 @@ const answers = [
 
 function toggleSections() {
     promptSection.classList.toggle('hide');
-    promptSection.classList.toggle('hide');
+    fortuneSection.classList.toggle('hide');
 }
 
-// (don't forget to call any display functions you want to run on page load!)
+submitBtn.addEventListener('click', () => {
+    toggleSections();
+
+    const randInt = Math.floor(Math.random() * answer.length);
+    const randomChoice = answer[randInt];
+
+    answerP.textContent = randomChoice;
+});
+
+resetBtn.addEventListener('click', () => {
+    toggleSections();
+});
